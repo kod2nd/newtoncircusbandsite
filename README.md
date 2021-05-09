@@ -1,5 +1,8 @@
 # newtoncircusmusic
 
+## Description
+Repo in VueJS for newton circus band's website
+
 ## Project setup
 ```
 yarn install
