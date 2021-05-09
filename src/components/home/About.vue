@@ -3,13 +3,13 @@
     <base-card class="pa-3">
       <base-subheading class="text-center">ABOUT US</base-subheading>
       <v-row align-content="center">
-        <v-col cols="6">
+        <v-col cols="6" align-content="right">
           <v-hover v-slot="{ hover }">
-            <v-card :elevation="hover ? 12 : 0" :class="{ 'on-hover': hover }">
+            <v-card max-width="500" :elevation="hover ? 12 : 0" :class="{ 'on-hover': hover }" class="ml-auto">
               <v-img
                 :src="require('@/assets/about_nc.jpg')"
-                class="fill-height ma-0"
-                max-height="350"
+                class="fill-height ma-0 ml-auto"
+                max-width="60vw"
                 align="center"
                 justify="center"
                 aspect-ratio="1"
@@ -42,6 +42,9 @@
 <style>
 .c-font {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.max-width{
+  max-width: 500;
 }
 </style>
 <script>

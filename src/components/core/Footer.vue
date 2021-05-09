@@ -1,14 +1,20 @@
 <template>
-  <v-footer
-    class="py-4"
-    height="auto"
-    color="white"
-  >
-    <v-container class="mx-auto">
-      <!-- <h6 class="text-center">Newton Circus 2021</h6> -->
-    </v-container>
+  <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+    <div class="c-font">
+      <h6>Copyright &copy; {{ new Date().getFullYear() }} Newton Circus - All Rights Reserved</h6>
+    </div>
+    </v-col>
   </v-footer>
 </template>
+<style>
+.c-font {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+</style>
 
 <script>
   export default {

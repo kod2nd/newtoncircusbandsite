@@ -4,14 +4,21 @@
     <v-img
       :src="require('@/assets/hero2.jpg')"
       position="top"
-      height="500"
+      height="100vh"
       width="100%"
       :elevation="10"
+      class="nc-hero"
     >
     </v-img>
     </v-card>
   </div>
 </template>
+<style>
+.nc-hero {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 
 <script>
 export default {
