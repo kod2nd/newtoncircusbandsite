@@ -33,8 +33,6 @@ export default {
   },
   mounted() {
     this.onResize();
-    console.log(this.$vuetify.breakpoint.width)
-
     window.addEventListener("resize", this.onResize, { passive: true });
   },
   props: {
