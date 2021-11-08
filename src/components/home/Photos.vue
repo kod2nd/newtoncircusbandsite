@@ -2,33 +2,46 @@
   <v-container id="photos" tag="section">
     <base-subheading class="text-center"> PHOTOS </base-subheading>
 
-    <insta-feed
-      :token="token"
-      fields="media_url,media_type,caption,permalink"
-      container-class="image-container"
-      :mediatypes="['IMAGE']"
-    >
-      <template v-slot:loading="props">
-        <h1 v-if="props.loading" class="fancy-loading">
-          Loading, please wait...
-        </h1>
-      </template>
-
-      <template v-slot:feeds="props">
-        <a :href="props.feed.permalink" rel="noopener" target="_blank">
-          <div class="instagram-image">
-            <img :src="props.feed.media_url" alt="Instagram post" />
-            <div :text="props.feed.caption" />
+    <CoolLightBox :items="images" :index="index" @close="index = null">
+    </CoolLightBox>
+    <v-container>
+      <v-row>
+        <v-col v-for="(image, imageIndex) in images"
+        :key="imageIndex" cols="3">
+          <div>
+            <slot name="loading" :loading="loading" />
+            <v-hover v-slot="{ hover }">
+              <v-card
+                :elevation="hover ? 12 : 0"
+                :class="{ 'on-hover': hover }"
+                @click="index = imageIndex"
+                :style="{ backgroundImage: `url(${image.thumb})` }"
+              >
+                <base-card :elevation="4 - 1">
+                  <v-img
+                    :src="`${image.thumb}`"
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                    :aspect-ratio="4 / 3"
+                  />
+                </base-card>
+              </v-card>
+            </v-hover>
+            <slot name="error" :error="error" />
           </div>
-        </a>
-      </template>
-
-      <template v-slot:error="props">
-        <div class="fancy-alert">
-          {{ props.error }}
-        </div>
-      </template>
-    </insta-feed>
+        </v-col>
+      </v-row>
+    </v-container>
+    <!-- <div class="images-wrapper">
+      <div
+        class="image"
+        v-for="(image, imageIndex) in images"
+        :key="imageIndex"
+        @click="index = imageIndex"
+        :style="{ backgroundImage: `url(${image.thumb})` }"
+      ></div>
+    </div> -->
     <hr class="style-one" />
   </v-container>
 </template>
@@ -43,15 +56,54 @@
 </style>
 
 <script>
+import CoolLightBox from "vue-cool-lightbox";
+import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css";
 export default {
-  name: "Photos",
+  components: {
+    CoolLightBox,
+  },
   data() {
     return {
-      token: process.env.VUE_APP_INSTAGRAM_TOKEN,
+      images: [
+        {
+          src: require("@/assets/photos/1.jpg"),
+          thumb: require("@/assets/photos/1.jpg"),
+        },
+        {
+          src: require("@/assets/photos/2.jpg"),
+          thumb: require("@/assets/photos/2.jpg"),
+        },
+        {
+          src: require("@/assets/photos/3.jpg"),
+          thumb: require("@/assets/photos/3.jpg"),
+        },
+        {
+          src: require("@/assets/photos/4.jpg"),
+          thumb: require("@/assets/photos/4.jpg"),
+        },
+        {
+          src: require("@/assets/photos/5.jpg"),
+          thumb: require("@/assets/photos/5.jpg"),
+        },
+        {
+          src: require("@/assets/photos/6.jpg"),
+          thumb: require("@/assets/photos/6.jpg"),
+        },
+        {
+          src: require("@/assets/photos/7.jpg"),
+          thumb: require("@/assets/photos/7.jpg"),
+        },
+        {
+          title: 'Jericho',
+          description: "Filmed in Beep Studios",
+          src: 'https://www.youtube.com/watch?v=HZqUWm_5JSs',
+          thumb: require("@/assets/photos/8.jpg"),
+        },
+      ],
+      index: null,
+      loading: false,
+      error: null,
     };
-  },
-  components: {
-    InstaFeed: () => import("@/components/InstaFeed"),
   },
 };
 </script>

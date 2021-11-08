@@ -2,23 +2,27 @@
   <v-container id="about" tag="section">
     <base-card class="pa-3">
       <base-subheading class="text-center">ABOUT US</base-subheading>
+      <CoolLightBox :items="images" :index="index" @close="index = null">
+      </CoolLightBox>
       <v-row align-content="center">
-        <v-col :cols="numCols" align-content="right">
-            <v-hover v-slot="{ hover }">
-              <v-card
-                :elevation="hover ? 12 : 0"
-                :class="{ 'on-hover': hover }"
-                class="ml-auto"
+        <v-col v-for="(image, imageIndex) in images"
+        :key="imageIndex" :cols="numCols" align-content="right">
+          <v-hover v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 0"
+              :class="{ 'on-hover': hover }"
+              class="ml-auto"
+              @click="index = imageIndex"
+            >
+              <v-img
+                :src="image"
+                class="fill-height ma-0 ml-auto"
+                align="center"
+                justify="center"
               >
-                <v-img
-                  :src="require('@/assets/about_nc.jpg')"
-                  class="fill-height ma-0 ml-auto"
-                  align="center"
-                  justify="center"
-                >
-                </v-img>
-              </v-card>
-            </v-hover>
+              </v-img>
+            </v-card>
+          </v-hover>
         </v-col>
         <v-col :cols="numCols">
           <div class="c-font text-left">
@@ -46,10 +50,19 @@
 }
 </style>
 <script>
+import CoolLightBox from "vue-cool-lightbox";
+import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css";
 export default {
   name: "HomeAbout",
-data: () => ({ isMobile: false,
-  numCols: "6" }),
+  components: {
+    CoolLightBox,
+  },
+  data: () => ({
+    isMobile: false,
+    numCols: "6",
+    images: [require("@/assets/about_nc.jpg")],
+    index: null,
+  }),
   beforeDestroy() {
     if (typeof window === "undefined") return;
 
@@ -67,9 +80,9 @@ data: () => ({ isMobile: false,
     onResize() {
       this.isMobile = window.innerWidth < 700;
       if (this.isMobile) {
-        this.numCols = "12"
+        this.numCols = "12";
       } else {
-        this.numCols = "6"
+        this.numCols = "6";
       }
     },
   },
