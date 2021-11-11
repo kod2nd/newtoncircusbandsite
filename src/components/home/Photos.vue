@@ -67,31 +67,31 @@ export default {
       images: [
         {
           src: require("@/assets/photos/1.jpg"),
-          thumb: require("@/assets/photos/1-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/1-min.jpg"),
         },
         {
           src: require("@/assets/photos/2.jpg"),
-          thumb: require("@/assets/photos/2-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/2-min.jpg"),
         },
         {
           src: require("@/assets/photos/3.jpg"),
-          thumb: require("@/assets/photos/3-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/3-min.jpg"),
         },
         {
           src: require("@/assets/photos/4.jpg"),
-          thumb: require("@/assets/photos/4-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/4-min.jpg"),
         },
         {
           src: require("@/assets/photos/5.jpg"),
-          thumb: require("@/assets/photos/5-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/5-min.jpg"),
         },
         {
           src: require("@/assets/photos/6.jpg"),
-          thumb: require("@/assets/photos/6-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/6-min.jpg"),
         },
         {
           src: require("@/assets/photos/7.jpg"),
-          thumb: require("@/assets/photos/7-min.jpg"),
+          thumb: require("@/assets/photos/thumbnails/7-min.jpg"),
         },
         {
           title: 'Jericho',

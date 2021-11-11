@@ -15,7 +15,7 @@
               @click="index = imageIndex"
             >
               <v-img
-                :src="image"
+                :src="image.thumb"
                 class="fill-height ma-0 ml-auto"
                 align="center"
                 justify="center"
@@ -60,7 +60,10 @@ export default {
   data: () => ({
     isMobile: false,
     numCols: "6",
-    images: [require("@/assets/about_nc.jpg")],
+    images: [{
+          src: require("@/assets/about_nc.jpg"),
+          thumb: require("@/assets/photos/thumbnails/5-min.jpg"),
+        },],
     index: null,
   }),
   beforeDestroy() {
