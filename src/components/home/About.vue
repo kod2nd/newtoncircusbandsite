@@ -62,7 +62,7 @@ export default {
     numCols: "6",
     images: [{
           src: require("@/assets/about_nc.jpg"),
-          thumb: require("@/assets/photos/thumbnails/5-min.jpg"),
+          thumb: require("@/assets/about_nc.jpg"),
         },],
     index: null,
   }),
